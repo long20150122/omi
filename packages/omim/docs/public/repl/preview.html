@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    ::-webkit-scrollbar-track {
+      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+      background-color: #F5F5F5;
+    }
+
+    ::-webkit-scrollbar {
+      width: 12px;
+      height: 12px;
+      background-color: #F5F5F5;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+      background-color: #555;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    /* button */
+    h3 {
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+    m-button {
+      margin-left: 10px;
+    }
+
+    /* icon */
+    m-icon {
+      margin: 20px;
+    }
+
+    /* top-app-bar */
+    .mdc-typography--subtitle1 {
+      font-size: 1rem;
+      line-height: 1.75rem;
+      font-weight: 400;
+      letter-spacing: .009375em;
+    }
+    .demos-content-one {
+      height: 130px;
+    }
+    .demos-content-two {
+      height: 80px;
+    }
+    .demos-display {
+      display: flex;
+      flex-wrap: wrap;
+      min-height: 200px;
+    }
+    .demo {
+      display: inline-block;
+      flex: 1 1 45%;
+      justify-content: space-around;
+      min-height: 200px;
+      min-width: 50px;
+      padding: 15px;
+    }
+    .iframe {
+      width: 100%;
+      height: 200px;
+    }
+
+    /* elevation */
+    .elevation-demo-surface {
+      display: -ms-inline-flexbox;
+      display: inline-flex;
+      -ms-flex-pack: distribute;
+      justify-content: space-around;
+      min-height: 100px;
+      min-width: 200px;
+      margin: 15px;
+      -ms-flex-align: center;
+      align-items: center;
+    }
+    .elevation-demo-container {
+      display: -ms-flexbox;
+      display: flex;
+      margin: auto;
+      -ms-flex: 1 1 auto;
+      flex: 1 1 auto;
+      -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+      -ms-flex-pack: justify;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    /* switch */
+    m-switch {
+      margin: 10px;
+    }
+
+		body{
+			padding: 15px;
+		}
+
+  </style>
+  <script src="./libs/omi.dev.js"></script>
+  <script src="../js/icon.js"></script>
+  <script src="../js/text-field.js"></script>
+  <script src="../js/button.js"></script>
+  <script src="../js/dialog.js"></script>
+  <script src="../js/top-app-bar.js"></script>
+  <script src="../js/checkbox.js"></script>
+  <script src="../js/elevation.js"></script>
+  <script src="../js/image-list.js"></script>
+  <script src="../js/layout-grid.js"></script>
+  <script src="../js/menu.js"></script>
+  <script src="../js/linear-progress.js"></script>
+  <script src="../js/radio.js"></script>
+  <script src="../js/select.js"></script>
+  <script src="../js/slider.js"></script>
+  <script src="../js/snackbar.js"></script>
+  <script src="../js/switch.js"></script>
+  <script src="../js/typography.js"></script>
+
+
+  <!-- <script>
+    var createElement = Omi.createElement
+    var define = Omi.define
+    var WeElement = Omi.WeElement
+    var render = Omi.render
+
+  </script> -->
+
+
+</head>
+
+<body style="background-color:#eee;">
+  <script>
+    document.body.innerHTML = parent._sourceCode
+    // var script = document.createElement("script");
+    // script.innerHTML = parent._sourceCode;
+    // document.body.appendChild(script)
+    console.log(parent)
+    console.log(parent.location.pathname)
+
+    // window.onload = function() {
+      // document.body.innerHTML = parent._sourceCode
+    if(parent.location.pathname.indexOf('repl/dialog.html') != -1) {
+
+      const dialogAlert = document.getElementById("m-dialog-alert");
+      const dialogSimple = document.getElementById("m-dialog-simple");
+      const dialogConfirmation = document.getElementById("m-dialog-confirmation");
+      const dialogScrollable = document.getElementById("m-dialog-scrollable");
+      const thowText = document.getElementById("show-text");
+
+      //Alert
+      dialogAlert.addEventListener('opening', (e) => {
+        console.log(e.detail.type)
+      })
+      dialogAlert.addEventListener('opened', (e) => {
+        console.log(e.detail.type)
+      })
+      dialogAlert.addEventListener('closing', (e) => {
+        console.log(e.detail.type)
+      })
+      dialogAlert.addEventListener('closed', (e) => {
+        console.log(e.detail.type)
+      })
+      dialogAlert.addEventListener('scrim', () => {
+        dialogAlert.removeAttribute("show");
+        thowText.innerHTML = "Declined... Maybe next time?";
+      })
+      dialogAlert.addEventListener('cancel', () => {
+        dialogAlert.removeAttribute("show");
+        thowText.innerHTML = "Declined... Maybe next time?";
+      })
+      dialogAlert.addEventListener('confirm', () => {
+        dialogAlert.removeAttribute("show");
+        thowText.innerHTML = "Accepted, thanks!";
+      })
+
+      //Simple
+      dialogSimple.addEventListener('opening', (e) => {
+        console.log(e.detail.type)
+      })
+      dialogSimple.addEventListener('opened', (e) => {
+        console.log(e.detail.type)
+      })
+      dialogSimple.addEventListener('closing', (e) => {
+        console.log(e.detail.type)
+      })
+      dialogSimple.addEventListener('closed', (e) => {
+        console.log(e.detail.type)
+      })
+      dialogSimple.addEventListener('scrim', () => {
+        dialogSimple.removeAttribute("show");
+        thowText.innerHTML = "Declined... Maybe next time?";
+      })
+      const liSmple0 = dialogSimple.shadowRoot.querySelector('#li-simple-0');
+      const liSmple1 = dialogSimple.shadowRoot.querySelector('#li-simple-1');
+      const liSmple2 = dialogSimple.shadowRoot.querySelector('#li-simple-2');
+      // console.log(liSmple0);
+      // console.log(liSmple1);
+      // console.log(liSmple2);
+      liSmple0.addEventListener('click', (e) => {
+        // console.log(e)
+        liSmple0.setAttribute('tabindex', '0');
+        liSmple1.setAttribute('tabindex', '-1');
+        liSmple2.setAttribute('tabindex', '-1');
+        dialogSimple.removeAttribute("show");
+        thowText.innerHTML = "Declined... Maybe next time?";
+      })
+      liSmple1.addEventListener('click', (e) => {
+        // console.log(e)
+        liSmple0.setAttribute('tabindex', '-1');
+        liSmple1.setAttribute('tabindex', '0');
+        liSmple2.setAttribute('tabindex', '-1');
+        dialogSimple.removeAttribute("show");
+        thowText.innerHTML = "Declined... Maybe next time?";
+      })
+      liSmple2.addEventListener('click', (e) => {
+        // console.log(e)
+        liSmple0.setAttribute('tabindex', '-1');
+        liSmple1.setAttribute('tabindex', '-1');
+        liSmple2.setAttribute('tabindex', '0');
+        dialogSimple.removeAttribute("show");
+        thowText.innerHTML = "Declined... Maybe next time?";
+      })
+
+      //Confirmation
+      dialogConfirmation.addEventListener('opening', (e) => {
+        console.log(e.detail.type)
+      })
+      dialogConfirmation.addEventListener('opened', (e) => {
+        console.log(e.detail.type)
+      })
+      dialogConfirmation.addEventListener('closing', (e) => {
+        console.log(e.detail.type)
+      })
+      dialogConfirmation.addEventListener('closed', (e) => {
+        console.log(e.detail.type)
+      })
+      dialogConfirmation.addEventListener('scrim', () => {
+        dialogConfirmation.removeAttribute("show");
+        thowText.innerHTML = "Declined... Maybe next time?";
+      })
+      dialogConfirmation.addEventListener('cancel', () => {
+        dialogConfirmation.removeAttribute("show");
+        thowText.innerHTML = "Declined... Maybe next time?";
+      })
+      dialogConfirmation.addEventListener('confirm', () => {
+        dialogConfirmation.removeAttribute("show");
+        thowText.innerHTML = "Accepted, thanks!";
+      })
+      //li-confirmation-0
+      const liConfirmation0 = dialogConfirmation.shadowRoot.querySelector('#li-confirmation-0');
+      const liConfirmation1 = dialogConfirmation.shadowRoot.querySelector('#li-confirmation-1');
+      const liConfirmation2 = dialogConfirmation.shadowRoot.querySelector('#li-confirmation-2');
+      liConfirmation0.addEventListener('click', (e) => {
+        liConfirmation0.setAttribute('tabindex', '0');
+        liConfirmation1.setAttribute('tabindex', '-1');
+        liConfirmation2.setAttribute('tabindex', '-1');
+        thowText.innerHTML = "Declined... Maybe next time?";
+      })
+      liConfirmation1.addEventListener('click', (e) => {
+        liConfirmation0.setAttribute('tabindex', '-1');
+        liConfirmation1.setAttribute('tabindex', '0');
+        liConfirmation2.setAttribute('tabindex', '-1');
+        thowText.innerHTML = "Declined... Maybe next time?";
+      })
+      liConfirmation2.addEventListener('click', (e) => {
+        liConfirmation0.setAttribute('tabindex', '-1');
+        liConfirmation1.setAttribute('tabindex', '-1');
+        liConfirmation2.setAttribute('tabindex', '0');
+        thowText.innerHTML = "Declined... Maybe next time?";
+      })
+
+      dialogScrollable.addEventListener('scrim', () => {
+        dialogScrollable.removeAttribute("show");
+        thowText.innerHTML = "Declined... Maybe next time?";
+      })
+      dialogScrollable.addEventListener('cancel', () => {
+        dialogScrollable.removeAttribute("show");
+        thowText.innerHTML = "Declined... Maybe next time?";
+      })
+      dialogScrollable.addEventListener('confirm', () => {
+        dialogScrollable.removeAttribute("show");
+        thowText.innerHTML = "Accepted, thanks!";
+      })
+
+
+      function onShowAlert() {
+        dialogAlert.setAttribute("show", true);
+        thowText.innerHTML = "open alert!";
+      }
+      function onShowSimple() {
+        dialogSimple.setAttribute("show", true);
+        thowText.innerHTML = "open simple!";
+      }
+      function onShowConfirmation() {
+        dialogConfirmation.setAttribute("show", true);
+        thowText.innerHTML = "open confirmation!";
+      }
+      function onShowScrollable() {
+        dialogScrollable.setAttribute("show", true);
+        thowText.innerHTML = "open scrollable!";
+      }
+
+    } else if(parent.location.pathname.indexOf('repl/top-app-bar.html') != -1) {
+
+      const demoShowButton = document.getElementById("demo-show-button");
+      const topAppBarShowMenus = document.getElementById("m-top-app-bar-show-menus");
+
+      topAppBarShowMenus.addEventListener('navigation', () => {
+        window.open('./top-app-bar/index.html')
+      })
+      topAppBarShowMenus.addEventListener('action0', () => {
+        window.open('./top-app-bar')
+      })
+
+    }  else if(parent.location.pathname.indexOf('repl/select.html') != -1) {
+
+      function changeA(e) {
+        console.log(e.detail)
+      }
+
+      function changeB(e) {
+        console.log(e.detail)
+      }
+
+    } else if(parent.location.pathname.indexOf('repl/slider.html') != -1) {
+      function change(evt){
+        console.log(evt.detail.value)
+      }
+    }
+      // document.body.innerHTML = parent._sourceCode
+    // }
+  </script>
+</body>
+
+</html>
